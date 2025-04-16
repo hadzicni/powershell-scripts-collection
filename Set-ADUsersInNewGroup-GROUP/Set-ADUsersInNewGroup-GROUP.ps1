@@ -22,32 +22,42 @@ Datum: 2025-01-14
 
 #>
 
-# Parameter-Eingabe
-$quelleGruppenname = Read-Host "Geben Sie den Namen der Quellgruppe ein"
-$zielGruppenname = Read-Host "Geben Sie den Namen der Zielgruppe ein"
+$quelleGruppenname = "Alle_Ressort_ICT"
+$zielGruppenname = "ICT_B_BelegungsplanWeb_User"
 
-# Abrufen der Gruppenobjekte
 $quelleGruppe = Get-ADGroup -Filter { Name -eq $quelleGruppenname }
 $zielGruppe = Get-ADGroup -Filter { Name -eq $zielGruppenname }
 
-# Überprüfen, ob Gruppen existieren
 if ($null -eq $quelleGruppe -or $null -eq $zielGruppe) {
-    Write-Host "Eine der Gruppen wurde nicht gefunden. Stelle sicher, dass die Gruppen existieren."
+    Write-Host "Eine der Gruppen wurde nicht gefunden. Stelle sicher, dass die Gruppen existieren." -ForegroundColor Red
     exit
 }
 
-# Abrufen der Mitglieder der Quellgruppe
 $quelleGruppenMitglieder = Get-ADGroupMember -Identity $quelleGruppe.DistinguishedName
+$zielGruppenMitglieder = Get-ADGroupMember -Identity $zielGruppe.DistinguishedName | Select-Object -ExpandProperty DistinguishedName
 
-# Hinzufügen der Mitglieder zur Zielgruppe
+$hinzugefuegt = 0
+$bereitsMitglied = 0
+$log = @()
+
 foreach ($mitglied in $quelleGruppenMitglieder) {
-    Add-ADGroupMember -Identity $zielGruppe -Members $mitglied.DistinguishedName
-    Write-Host "Mitglied $($mitglied.SamAccountName) wurde der Zielgruppe hinzugefügt."
+    if ($zielGruppenMitglieder -contains $mitglied.DistinguishedName) {
+        $log += "🔹 Bereits Mitglied: $($mitglied.SamAccountName)"
+        $bereitsMitglied++
+    } else {
+        try {
+            Add-ADGroupMember -Identity $zielGruppe -Members $mitglied.DistinguishedName -ErrorAction Stop
+            Write-Host "Mitglied $($mitglied.SamAccountName) wurde der Zielgruppe hinzugefügt." -ForegroundColor Green
+            $log += "✅ Erfolgreich hinzugefügt: $($mitglied.SamAccountName)"
+            $hinzugefuegt++
+        } catch {
+            Write-Host "Fehler beim Hinzufügen von $($mitglied.SamAccountName)." -ForegroundColor Red
+            $log += "⚠️ Fehler: $($mitglied.SamAccountName)"
+        }
+    }
 }
 
-# Abschlussmeldung
-Write-Host
-Write-Host "Alle Mitglieder wurden der anderen Gruppe hinzugefügt."
-Write-Host "Die Zielgruppe enthält nun alle Mitglieder der Quellgruppe."
-Write-Host "Die Mitglieder der Quellgruppe wurden nicht gelöscht."
-Write-Host "Operation completed successfully."
+Write-Host "`n========= Abschlussbericht =========" -ForegroundColor White
+Write-Host "Zielgruppe: $zielGruppenname" -ForegroundColor White
+Write-Host "✔ Erfolgreich hinzugefügt: $hinzugefuegt" -ForegroundColor Green
+Write-Host "🔹 Bereits in der Gruppe: $bereitsMitglied" -ForegroundColor Cyan

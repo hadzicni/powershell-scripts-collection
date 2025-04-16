@@ -23,8 +23,8 @@ Datum: 2025-02-17
 #>
 
 # Eingabe der Datei mit den Benutzernamen
-$benutzerDatei = "C:\Users\hadzicni\Desktop\Powershell-Scripts-Collection\Set-ADUsersInNewGroup-USERS\userlist.txt"
-$zielGruppenname = "ICT_P_ECP_Clarunis_Viszeral"
+$benutzerDatei = "C:\Users\hadzicni\Documents\Projects\AA--PowerShell Scripts\Set-ADUsersInNewGroup-USERS\userlist.txt"
+$zielGruppenname = "ICT_B_ECP_PHC"
 
 # Überprüfen, ob die Datei existiert
 if (-Not (Test-Path $benutzerDatei)) {
@@ -79,7 +79,8 @@ foreach ($benutzer in $benutzerListe) {
         Write-Host "Benutzer '$benutzer' wurde erfolgreich hinzugefügt." -ForegroundColor Green
         $log += "✅ Erfolgreich hinzugefügt: $benutzer"
         $hinzugefuegt++
-    } catch {
+    }
+    catch {
         Write-Host "Fehler beim Hinzufügen von '$benutzer'." -ForegroundColor Red
         $log += "⚠️ Fehler: $benutzer"
     }
