@@ -3,7 +3,7 @@
 A growing collection of **PowerShell (.ps1)** scripts for Windows automation, configuration, system tools, and developer convenience. Designed for IT pros, power users, and devs who want to supercharge their workflows with powerful scripting.
 
 ![Platform](https://img.shields.io/badge/platform-Windows-lightgrey)
-![License](https://img.shields.io/badge/license-MIT-green)
+![License](https://img.shields.io/badge/license-Apache--2.0-blue)
 ![Language](https://img.shields.io/badge/language-PowerShell-blue)
 
 ---
