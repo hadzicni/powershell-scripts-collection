@@ -1,38 +1,69 @@
-# PowerShell Scripts Collection
+# 🪟 PowerShell Scripts Collection
 
-This repository contains a collection of PowerShell scripts for various Active Directory (AD) and system administration tasks.
+A growing collection of **PowerShell (.ps1)** scripts for Windows automation, configuration, system tools, and developer convenience. Designed for IT pros, power users, and devs who want to supercharge their workflows with powerful scripting.
 
-## Scripts
+![Platform](https://img.shields.io/badge/platform-Windows-lightgrey)
+![License](https://img.shields.io/badge/license-MIT-green)
+![Language](https://img.shields.io/badge/language-PowerShell-blue)
 
-### [DeleteJob.ps1](DeleteJob.ps1)
-This script automatically deletes files older than a specified age in a chosen directory.
+---
 
-### [Export-UsersOfGroup.ps1](Export-UsersOfGroup.ps1)
-This script exports all users of an Active Directory group to an Excel file.
+## ✨ Highlights
 
-### [Get-CurrentUser.ps1](Get-CurrentUser.ps1)
-This script retrieves the currently logged-in user of a specified host.
+- 🔁 System cleanup, config tweaks, and diagnostics
+- ⚙️ Git, Docker, VS Code automation
+- 🔐 Network tools and credential handling
+- 💻 File, process, and registry utilities
+- 📂 Modular structure and comments for easy reuse
 
-### [Get-LastLoggedOnDevice.ps1](Get-LastLoggedOnDevice.ps1)
-This script retrieves the device on which a user was last logged in.
+---
 
-### [Heyex_B_Groups_Script.ps1](Heyex_B_Groups_Script.ps1)
-This script checks if all users of a specified AD group are members of the required groups.
+## 🚀 Usage
 
-### [Info-List-of-SAMACCS-AD/Info-List-AD.ps1](Info-List-of-SAMACCS-AD/Info-List-AD.ps1)
-This script retrieves information about users listed in `userliste.txt` and exports the results to a CSV file.
+1. Clone the repository:
 
-### [Set-ADUsersInNewGroup.ps1](Set-ADUsersInNewGroup.ps1)
-This script adds users to a new AD group based on the members of a source group.
+   ```powershell
+   git clone https://github.com/hadzicni/powershell-scripts-collection.git
+   cd powershell-scripts-collection
+   ```
 
-## Usage
+2. (Optional) Unblock script if downloaded:
 
-Each script contains detailed comments and examples on how to use it. Please refer to the comments within each script for more information.
+   ```powershell
+   Unblock-File .\script-name.ps1
+   ```
 
-## Author
+3. Run a script:
 
-All scripts are authored by Nikola Hadzic.
+   ```powershell
+   .\script-name.ps1
+   ```
 
-## License
+> 💡 Tip: You might need to adjust your execution policy:
+>
+> ```powershell
+> Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+> ```
 
-This project is licensed under the MIT License.
+---
+
+## 🤝 Contributing
+
+Feel free to open issues or pull requests if you'd like to:
+
+- Add new PowerShell utilities
+- Optimize or refactor scripts
+- Share Windows scripting tricks
+
+---
+
+## 👨‍💻 Author
+
+Made by **Nikola Hadzic**  
+GitHub: [@hadzicni](https://github.com/hadzicni)
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
