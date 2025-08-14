@@ -1,0 +1,10 @@
+# Example user list for testing scripts
+# One username per line, no spaces or special characters
+
+john.doe
+jane.smith
+admin.user
+test.account
+service.account
+backup.operator
+helpdesk.user
