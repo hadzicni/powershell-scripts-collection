@@ -40,10 +40,7 @@ param(
     [string]$TargetGroupName,
 
     [Parameter(Mandatory = $false, HelpMessage = "Path for log file")]
-    [string]$LogFile = "",
-
-    [Parameter(Mandatory = $false, HelpMessage = "Show what would be done without making changes")]
-    [switch]$WhatIf
+    [string]$LogFile = ""
 )
 
 # Import Active Directory module
