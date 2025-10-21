@@ -4,6 +4,7 @@
 ### PowerShell ###
 # Exclude packaged modules
 *.zip
+*.csv
 
 # Exclude .NET assemblies from source
 *.dll
