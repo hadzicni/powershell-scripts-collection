@@ -1,0 +1,6 @@
+# Example devices hostname list for testing scripts
+# One device hostname per line, no spaces or special characters
+
+LAPTOP01
+PC-TEST23
+CLIENT17
